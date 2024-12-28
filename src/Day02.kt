@@ -83,10 +83,10 @@ fun main() {
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day02_test")
-//    check(part1(testInput) == 2)
+    check(part1(testInput) == 2)
     check(part2(testInput) == 4)
 
     val input = readInput("Day02")
-//    println(part1(input))
+    println(part1(input))
     println(part2(input))
 }
