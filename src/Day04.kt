@@ -14,7 +14,7 @@ fun main() {
     }
 
     fun findVertical(input: List<String>) : Int {
-
+        return 0
     }
 
     fun part1(input: List<String>): Int {
