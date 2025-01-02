@@ -11,34 +11,20 @@ fun main() {
 
     fun reorder(pairs: List<Pair<Int, Int>>, update: List<Int>) : List<Int> {
         val relevantPairs = pairs.filter { pair -> update.contains(pair.second) && update.contains(pair.first) }
-
         val movableUpdate = update.toMutableList()
-
 
         while(!isValid(pairs, movableUpdate)){
 
             for(pair in relevantPairs){
 
-            }
-        }
+                if(!isPairValid(pair, movableUpdate)){
+                    val indexValue = movableUpdate.indexOf(pair.first)
+                    val indexSecond = movableUpdate.indexOf(pair.second)
 
-        for(v in update){
-            val relevantPairs = pairs.filter { pair -> pair.first == v }
-
-
-            for (pair in relevantPairs) {
-                val after = pair.second
-
-                val indexV = update.indexOf(v)
-                val indexS = update.indexOf(after)
-
-                if(indexS != -1 && indexV > indexS) {
-                    movableUpdate[indexV] = pair.second
-                    movableUpdate[indexS] = pair.first
+                    movableUpdate.removeAt(indexValue)
+                    movableUpdate.add(indexSecond, pair.first)
                 }
-
             }
-
         }
 
         return movableUpdate
@@ -79,22 +65,18 @@ fun main() {
             }
         }
 
-        val incorrect = updates.filter { !isValid(pairs, it) }
-
-        // TODO : Reorder here
-        val reordered = incorrect.map { reorder(pairs, it) }
-
-        return reordered
+        return updates
+            .filter { !isValid(pairs, it) } // incorrect
+            .map { reorder(pairs, it) } // reordered
             .sumOf { update -> update[update.size / 2] }
-
     }
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day05_test")
     check(part1(testInput) == 143)
-//    check(part2(testInput) == 123)
+    check(part2(testInput) == 123)
 
     val input = readInput("Day05")
     println(part1(input))
-//    println(part2(input))
+    println(part2(input))
 }
