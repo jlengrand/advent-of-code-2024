@@ -1,4 +1,3 @@
-import javax.swing.text.Position
 
 enum class Direction {
     UP, DOWN, RIGHT, LEFT
@@ -80,20 +79,8 @@ fun main() {
             idxCol +=1
         }
 
-//        println("-----")
-//        println(mapSize)
-//        println(obstacles)
-//        println(position)
-//        println(direction)
-//        println("-----")
-//        printMap(input, obstacles, visited, position, direction)
-//        println("-----")
-
         // LOOP
         while(insideMap(position, mapSize)){
-//            println("-----")
-//            println(position)
-//            printMap(input, obstacles, visited, position, direction)
 
             if(direction == Direction.UP){
                 visited.add(position)
@@ -165,10 +152,6 @@ fun main() {
         while(insideMap(position, mapSize)){
             if(iteration > maxIteration){ return true}
 
-//            println("-----")
-//            println(position)
-//            printMap(input, obstacles, visited, position, direction)
-
             if(direction == Direction.UP){
                 visited.add(position)
                 val newPosition = Pair(position.first - 1, position.second)
@@ -219,7 +202,6 @@ fun main() {
     fun part2(input: List<String>): Int {
 
         val obstacles = mutableListOf<Pair<Int, Int>>()
-        val visited = mutableListOf<Pair<Int, Int>>()
 
         var position = Pair(-1, -1)
         var direction = Direction.UP
@@ -255,15 +237,6 @@ fun main() {
 
             idxCol +=1
         }
-
-//        println("-----")
-//        println(mapSize)
-//        println(obstacles)
-//        println(position)
-//        println(direction)
-//        println("-----")
-//        printMap(input, obstacles, visited, position, direction)
-//        println("-----")
 
         // LOOP
 
